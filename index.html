@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Left Panel Navigation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+  <div id="left-panel">
+    <a href="#" onclick="showContent('home')"><i class="fas fa-home"></i>&nbsp;&nbsp; Home</a>
+    <a href="#" onclick="showContent('contact')"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Contact</a>
+    <a href="#" onclick="showContent('information')"><i class="fas fa-info-circle"></i> &nbsp;&nbsp;Information</a>
+    <a href="#" onclick="showContent('guide')"><i class="fas fa-book"></i>&nbsp;&nbsp; Guide</a>
+  </div>
+  <div id="content">
+    <h1 style="padding-left: 20px;">Welcome to the Home Page!</h1>
+    <p style="padding-left: 20px;">This is the default content that is displayed when you open the page.</p>
+  </div>
+
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+  <script>
+    function showContent(contentName) {
+      const contentDiv = document.getElementById('content');
+      contentDiv.style.animation = 'none'; // Reset animation
+
+      switch (contentName) {
+        case 'home':
+          contentDiv.innerHTML = `
+            <h1 class="home">Welcome to the Home Page!</h1>
+            
+          `;
+          break;
+        case 'contact':
+          contentDiv.innerHTML = `
+            
+          <section class="contact" id="contact">
+            <div class="row">
+                <h1>CONTACT US</h1>
+            </div>
+            <div class="row">
+                <form>
+                    <input type="text" required placeholder="Name">
+                    <input type="email" required placeholder="Email">
+                    <textarea></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </section>
+            <footer class="footer">
+                <div class="social">
+                    <a href="www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="www.snapchat.com" target="_blank"><i class="fab fa-snapchat"></i></a>
+                    <a href="www.meta.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p class="copyright">
+                    Copyright @2023
+                </p>
+            </footer>
+          `;
+          break;
+        case 'information':
+          contentDiv.innerHTML = `
+            <h1 class="home">Information</h1>
+            
+          `;
+          break;
+        case 'guide':
+          contentDiv.innerHTML = `
+            <h1 class="home">Guide</h1>
+            <p class="home">Here's a helpful guide for you!</p>
+          `;
+          break;
+        default:
+          contentDiv.innerHTML = `
+            <h1 class="home">Page not found</h1>
+            <p class="home">Oops! The page you're looking for doesn't exist.</p>
+          `;
+      }
+
+      contentDiv.style.animation = 'fadeIn 0.5s ease-in'; // Apply animation
+
+      // Remove the 'active' class from all links and add it to the clicked link
+      const links = document.querySelectorAll('#left-panel a');
+      links.forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
